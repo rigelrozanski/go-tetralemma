@@ -1,6 +1,6 @@
 # go-tetralemma
 
-Golang implementation of the tetralemma
+Golang library implementation of the tetralemma
 
 https://en.wikipedia.org/wiki/Tetralemma:
 

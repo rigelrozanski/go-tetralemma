@@ -61,8 +61,8 @@ func (c *Catus) EqualNotUnequal(compare *Catus) *Catus {
 }
 
 func (c *Catus) UnequalNotEqual(compare *Catus) *Catus {
-	c1 := getcatus(c)
-	c2 := getcatus(compare)
+	c1 := getcatus(&c)
+	c2 := getcatus(&compare)
 
 	switch {
 	case c1.value == c2.value:
@@ -74,7 +74,7 @@ func (c *Catus) UnequalNotEqual(compare *Catus) *Catus {
 	}
 }
 
-//////////////////////////////////// unexposed
+////////////////////////////////////
 const (
 	TNF  byte = 0x00 //true and not false
 	NTF  byte = 0x01 //not true and false
@@ -94,7 +94,7 @@ var (
 	catusNTNF = catus{NTNF, TF}
 )
 
-func (c *Catus) getcatus() *catus {
+func getcatus(c Catus) catus {
 	if c.Is {
 		if c.Isnt {
 			return catusTF
@@ -110,7 +110,7 @@ func (c *Catus) getcatus() *catus {
 	}
 }
 
-func (c catus) getCatus() *Catus {
+func getCatus(c catus) *Catus {
 	switch c.value {
 	case catusTNF:
 		return &Catus{true, false}
